@@ -40,15 +40,7 @@ export function Sidebar() {
   const cfg = JENJANG_CONFIG[jenjang];
   const meta = jenjangMeta[jenjang];
 
-  const handleLogout = async () => {
-    try {
-      await fetch("/api/auth/signout", { method: "POST" });
-      window.location.href = "/login";
-    } catch (e) {
-      console.error(e);
-      window.location.href = "/login";
-    }
-  };
+
 
   return (
     <aside className="hidden md:flex flex-col w-72 bg-slate-900 h-screen sticky top-0 border-r border-slate-800 overflow-hidden">
@@ -160,16 +152,15 @@ export function Sidebar() {
 
         {/* ── Logout ── */}
         <div className="px-3 py-4 border-t border-slate-800">
-          <button
-            onClick={handleLogout}
-            type="button"
+          <a
+            href="/api/auth/signout"
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-500 hover:bg-red-500/10 hover:text-red-400 transition-all duration-200 group"
           >
             <div className="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-red-500/10 flex items-center justify-center transition-all">
               <LogOut className="w-4 h-4" />
             </div>
             <span className="font-medium">Keluar</span>
-          </button>
+          </a>
         </div>
       </div>
     </aside>
