@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { requireAuth } from "@/lib/auth";
@@ -13,7 +13,6 @@ export default async function MateriPage({
 }: {
   searchParams: Promise<{ q?: string }>;
 }) {
-  await requireAuth();
   const supabase = await createSupabaseServerClient();
   const session = await requireAuth();
   const { q } = await searchParams;
