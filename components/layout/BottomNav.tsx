@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard, BookOpen, CalendarDays, ClipboardList, Sparkles,
+  LayoutDashboard, BookOpen, CalendarDays, ClipboardList, Sparkles, GraduationCap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useJenjang } from "./JenjangProvider";
@@ -15,7 +15,9 @@ const navItems = [
   { href: "/materi",    label: "Materi",    icon: BookOpen },
   { href: "/jadwal",    label: "Jadwal",    icon: CalendarDays },
   { href: "/tugas",     label: "Tugas",     icon: ClipboardList },
+  { href: "/murid",     label: "Murid",     icon: GraduationCap },
   { href: "/ai",        label: "AI",        icon: Sparkles },
+
 ];
 
 const jenjangGradient: Record<Jenjang, string> = {

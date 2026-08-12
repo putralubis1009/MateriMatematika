@@ -54,7 +54,7 @@ export function Sidebar() {
             <GraduationCap className="w-5 h-5 text-white" />
           </div>
           <div>
-            <p className="font-bold text-white text-[15px] leading-tight tracking-tight">EduMath AI</p>
+            <p className="font-bold text-white text-[15px] leading-tight tracking-tight">Kelas MTK Dewi</p>
             <p className="text-xs text-indigo-400 font-medium mt-0.5">Platform Guru Matematika</p>
           </div>
         </div>

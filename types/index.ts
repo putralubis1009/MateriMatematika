@@ -161,3 +161,21 @@ export interface FormTugas {
   jenjang: Jenjang
   kelas: number
 }
+
+// ── Murid Types ─────────────────────────────────────────────
+
+export interface Murid {
+  id: string
+  guru_id: string
+  nama_lengkap: string
+  kode_akses: string
+  jenjang: Jenjang
+  kelas: number
+  dibuat_pada: string
+}
+
+export interface FormMurid {
+  nama_lengkap: string
+  jenjang: Jenjang
+  kelas: number
+}

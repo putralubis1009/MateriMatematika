@@ -17,8 +17,8 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "EduMath AI — Platform Guru Matematika",
-    template: "%s | EduMath AI",
+    default: "Kelas MTK Dewi — Platform Guru Matematika",
+    template: "%s | Kelas MTK Dewi",
   },
   description:
     "Platform modern untuk guru matematika: catat materi, atur jadwal, kelola tugas siswa, dan dapatkan rekomendasi AI berdasarkan jenjang kelas.",
