@@ -211,8 +211,8 @@ export default function LoginPage() {
           {/* ─── FORM MURID ─── */}
           {isStudentView && (
             <form onSubmit={handleStudentLogin} className="space-y-4 animate-fade-in-up">
-              <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl px-4 py-3 mb-2">
-                <p className="text-xs text-indigo-300 font-medium">
+              <div className="bg-indigo-100 border border-indigo-200 rounded-xl px-4 py-3 mb-2">
+                <p className="text-xs text-slate-900 font-semibold">
                   📚 Masukkan nama lengkap dan kode akses yang diberikan gurumu.
                 </p>
               </div>
