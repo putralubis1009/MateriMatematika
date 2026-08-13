@@ -23,7 +23,7 @@ export async function loginAction(formData: FormData) {
 
     if (error) {
       console.log("loginAction auth error", error.message);
-      return { error: error.message };
+      return { error: "login gagal, jangan masuk ke halaman gurumu ya^^" };
     }
 
     console.log("loginAction success");
