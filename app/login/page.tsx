@@ -100,8 +100,8 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8 animate-fade-in-up">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-5 shadow-2xl overflow-hidden">
-            <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+          <div className="inline-flex items-center justify-center w-28 h-28 rounded-3xl bg-white mb-6 shadow-2xl overflow-hidden">
+            <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-contain p-1" />
           </div>
           <h1 className="text-3xl font-black text-white tracking-tight">
             Kelas MTK Dewi

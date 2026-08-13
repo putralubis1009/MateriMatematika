@@ -52,8 +52,8 @@ export function Sidebar() {
       <div className="relative flex flex-col h-full">
         {/* ── Logo ── */}
         <div className="flex items-center gap-3.5 px-6 py-6 border-b border-slate-800">
-          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-indigo-500/30 flex-shrink-0">
-            <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+          <div className="w-12 h-12 rounded-xl overflow-hidden shadow-lg shadow-indigo-500/30 flex-shrink-0 bg-white">
+            <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-contain p-0.5" />
           </div>
           <div>
             <p className="font-bold text-white text-[15px] leading-tight tracking-tight">Kelas MTK Dewi</p>

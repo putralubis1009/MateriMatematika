@@ -7,8 +7,8 @@ export function MobileHeader() {
   return (
     <header className="md:hidden flex items-center justify-between px-4 py-3 bg-white border-b border-slate-200 shadow-sm z-40 sticky top-0">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-          <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+        <div className="w-10 h-10 rounded-lg overflow-hidden shadow-md flex-shrink-0 bg-white border border-slate-100">
+          <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-contain p-0.5" />
         </div>
         <div>
           <p className="font-bold text-slate-800 text-[14px] leading-tight tracking-tight">Kelas MTK Dewi</p>
