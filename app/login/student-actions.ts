@@ -26,6 +26,7 @@ export async function studentLoginAction(formData: FormData) {
       .single();
 
     if (muridError || !murid) {
+      console.error("DEBUG studentLoginAction error:", muridError);
       return { error: "Kode akses tidak valid. Tanyakan kepada gurumu." };
     }
 

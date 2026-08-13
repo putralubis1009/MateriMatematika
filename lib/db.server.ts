@@ -2,7 +2,7 @@
  * db.server.ts — Hanya digunakan di Server Components & API Routes
  * File ini mengimport next/headers sehingga TIDAK boleh diimport dari client components.
  */
-import { createClient } from '@insforge/sdk'
+import { createClient, createAdminClient as createInsforgeAdmin } from '@insforge/sdk'
 import { createServerClient, type CookieOptions } from '@insforge/sdk/ssr'
 import { cookies } from 'next/headers'
 
@@ -33,8 +33,8 @@ export async function createSupabaseServerClient() {
  */
 export function createAdminClient() {
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
-  return createClient({
+  return createInsforgeAdmin({
     baseUrl: supabaseUrl,
-    anonKey: serviceRoleKey,
+    apiKey: serviceRoleKey,
   })
 }
