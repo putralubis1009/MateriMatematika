@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard, BookOpen, CalendarDays, ClipboardList, Sparkles, GraduationCap
+  LayoutDashboard, BookOpen, CalendarDays, ClipboardList, Sparkles, GraduationCap, Sigma
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useJenjang } from "./JenjangProvider";
@@ -16,8 +16,8 @@ const navItems = [
   { href: "/jadwal",    label: "Jadwal",    icon: CalendarDays },
   { href: "/tugas",     label: "Tugas",     icon: ClipboardList },
   { href: "/murid",     label: "Murid",     icon: GraduationCap },
+  { href: "/rumus",     label: "Rumus",     icon: Sigma },
   { href: "/ai",        label: "AI",        icon: Sparkles },
-
 ];
 
 const jenjangGradient: Record<Jenjang, string> = {
@@ -75,8 +75,8 @@ export function BottomNav() {
       </div>
 
       {/* Bottom nav */}
-      <nav className="bg-white/90 backdrop-blur-xl border-t border-slate-200/60 shadow-xl">
-        <div className="flex items-center justify-around h-[60px] px-2">
+      <nav className="bg-white/90 backdrop-blur-xl border-t border-slate-200/60 shadow-xl overflow-x-auto hide-scrollbar">
+        <div className="flex items-center flex-nowrap w-max min-w-full h-[60px] px-2 snap-x snap-mandatory">
           {navItems.map(({ href, label, icon: Icon }) => {
             const isActive = pathname === href || pathname.startsWith(href + "/");
             return (
@@ -84,7 +84,7 @@ export function BottomNav() {
                 key={href}
                 href={href}
                 className={cn(
-                  "flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200",
+                  "flex flex-col items-center justify-center gap-1 min-w-[72px] px-2 py-2 rounded-xl transition-all duration-200 snap-center",
                   isActive ? "text-indigo-600" : "text-slate-400 hover:text-slate-600"
                 )}
               >
@@ -97,7 +97,7 @@ export function BottomNav() {
                     <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-indigo-600" />
                   )}
                 </div>
-                <span className={cn("text-[10px] font-semibold", isActive ? "text-indigo-600" : "")}>{label}</span>
+                <span className={cn("text-[10px] font-semibold whitespace-nowrap", isActive ? "text-indigo-600" : "")}>{label}</span>
               </Link>
             );
           })}
