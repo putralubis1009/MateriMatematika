@@ -52,8 +52,8 @@ export function Sidebar() {
       <div className="relative flex flex-col h-full">
         {/* ── Logo ── */}
         <div className="flex items-center gap-3.5 px-6 py-6 border-b border-slate-800">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 flex-shrink-0">
-            <GraduationCap className="w-5 h-5 text-white" />
+          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-indigo-500/30 flex-shrink-0">
+            <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
           </div>
           <div>
             <p className="font-bold text-white text-[15px] leading-tight tracking-tight">Kelas MTK Dewi</p>
