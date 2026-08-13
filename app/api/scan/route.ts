@@ -31,10 +31,7 @@ export async function POST(request: NextRequest) {
   
   const { data: uploadData, error: uploadError } = await supabase.storage
     .from("materi")
-    .upload(filePath, file, {
-      upsert: true,
-      contentType: file.type,
-    });
+    .upload(filePath, file);
 
   if (uploadError || !uploadData) {
     return NextResponse.json({ error: "Gagal mengupload foto: " + (uploadError?.message || "Unknown error") }, { status: 500 });
