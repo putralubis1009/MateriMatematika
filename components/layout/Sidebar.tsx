@@ -12,33 +12,35 @@ import {
   LogOut,
   GraduationCap,
   ChevronRight,
+  Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useJenjang } from "./JenjangProvider";
 import { JENJANG_CONFIG, JENJANG_ORDER } from "@/lib/jenjang";
 import type { Jenjang } from "@/types";
-
 const navItems = [
-  { href: "/dashboard", label: "Dashboard",      icon: LayoutDashboard, desc: "Ringkasan & statistik" },
-  { href: "/materi",    label: "Materi",          icon: BookOpen,        desc: "Catatan materi ajar" },
-  { href: "/jadwal",    label: "Jadwal",          icon: CalendarDays,    desc: "Checklist kegiatan" },
-  { href: "/tugas",     label: "Tugas Siswa",     icon: ClipboardList,   desc: "Daftar & status tugas" },
-  { href: "/rumus",     label: "Pustaka Rumus",   icon: Sigma,           desc: "Bank rumus matematika" },
-  { href: "/ai",        label: "Rekomendasi AI",  icon: Sparkles,        desc: "Saran berbasis AI" },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, desc: "Ringkasan & statistik" },
+  { href: "/materi", label: "Materi", icon: BookOpen, desc: "Catatan materi ajar" },
+  { href: "/jadwal", label: "Jadwal", icon: CalendarDays, desc: "Checklist kegiatan" },
+  { href: "/tugas", label: "Tugas Siswa", icon: ClipboardList, desc: "Daftar & status tugas" },
+  { href: "/murid", label: "Daftar Murid", icon: Users, desc: "Kelola data & akses murid" },
+  { href: "/rumus", label: "Pustaka Rumus", icon: Sigma, desc: "Bank rumus matematika" },
+  { href: "/ai", label: "Rekomendasi AI", icon: Sparkles, desc: "Saran berbasis AI" },
 ];
 
 const jenjangMeta: Record<Jenjang, { gradient: string; ring: string; glow: string }> = {
-  SD:  { gradient: "from-emerald-500 to-teal-500",    ring: "ring-emerald-500/30", glow: "shadow-emerald-500/25" },
-  SMP: { gradient: "from-indigo-500 to-violet-500",   ring: "ring-indigo-500/30",  glow: "shadow-indigo-500/25" },
-  SMA: { gradient: "from-violet-500 to-purple-600",   ring: "ring-violet-500/30",  glow: "shadow-violet-500/25" },
+  SD: { gradient: "from-emerald-500 to-teal-500", ring: "ring-emerald-500/30", glow: "shadow-emerald-500/25" },
+  SMP: { gradient: "from-indigo-500 to-violet-500", ring: "ring-indigo-500/30", glow: "shadow-indigo-500/25" },
+  SMA: { gradient: "from-violet-500 to-purple-600", ring: "ring-violet-500/30", glow: "shadow-violet-500/25" },
 };
 
 export function Sidebar() {
   const pathname = usePathname();
-  const router = useRouter();
   const { jenjang, kelas, setJenjang, setKelas } = useJenjang();
-  const cfg = JENJANG_CONFIG[jenjang];
-  const meta = jenjangMeta[jenjang];
+  
+  // Safe fallbacks in case jenjang is invalid
+  const cfg = JENJANG_CONFIG[jenjang] || JENJANG_CONFIG['SMP'];
+  const meta = jenjangMeta[jenjang] || jenjangMeta['SMP'];
 
 
 
@@ -120,7 +122,7 @@ export function Sidebar() {
         <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-y-auto sidebar-scroll">
           <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2 px-3 pt-1">Menu</p>
           {navItems.map(({ href, label, icon: Icon, desc }) => {
-            const isActive = pathname === href || pathname.startsWith(href + "/");
+            const isActive = pathname === href || pathname?.startsWith(href + "/");
             return (
               <Link
                 key={href}
