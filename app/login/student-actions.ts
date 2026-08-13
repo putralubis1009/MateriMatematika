@@ -27,7 +27,7 @@ export async function studentLoginAction(formData: FormData) {
 
     if (muridError || !murid) {
       console.error("DEBUG studentLoginAction error:", muridError);
-      return { error: "Kode akses tidak valid. Tanyakan kepada gurumu." };
+      return { error: `[DEBUG] DB Error: ${muridError?.message || "Row not found"}` };
     }
 
     // Validasi nama (case-insensitive, tolerant whitespace)
