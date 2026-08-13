@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
+import { createSupabaseServerClient } from "@/lib/db.server";
 
 export async function GET() {
+  const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getCurrentUser();
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: "API Key tidak dikonfigurasi" }, { status: 500 });

@@ -1,9 +1,11 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/db.server";
 
 // GET /api/rumus — Daftar semua rumus (bisa difilter per kategori)
 export async function GET() {
   const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getCurrentUser();
+  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { data, error } = await supabase.database.from("rumus")
     .select("*")
