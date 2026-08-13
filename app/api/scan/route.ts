@@ -1,6 +1,6 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/db.server";
-import { uploadFile, generateFileName } from "@/lib/storage";
+import { generateFileName } from "@/lib/storage";
 
 // POST /api/scan — Upload foto scan materi
 export async function POST(request: NextRequest) {
@@ -27,12 +27,27 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Ukuran file terlalu besar. Maksimal 10MB." }, { status: 400 });
   }
 
-  const buffer = Buffer.from(await file.arrayBuffer());
   const filePath = generateFileName(session.user.id, file.name);
-  const { url, error } = await uploadFile(buffer, "materi", filePath);
+  
+  const { data: uploadData, error: uploadError } = await supabase.storage
+    .from("materi")
+    .upload(filePath, file, {
+      upsert: true,
+      contentType: file.type,
+    });
 
-  if (error || !url) {
-    return NextResponse.json({ error: "Gagal mengupload foto" }, { status: 500 });
+  if (uploadError || !uploadData) {
+    return NextResponse.json({ error: "Gagal mengupload foto: " + (uploadError?.message || "Unknown error") }, { status: 500 });
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from("materi")
+    .getPublicUrl(filePath);
+
+  const url = publicUrlData?.publicUrl;
+
+  if (!url) {
+    return NextResponse.json({ error: "Gagal mendapatkan URL foto" }, { status: 500 });
   }
 
   // Catat aktivitas scan
